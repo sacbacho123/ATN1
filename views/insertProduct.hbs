@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+     <h2>Create New Product</h2>
+            <form action="/product/insert" enctype="multipart/form-data" method="POST">
+                <p>Product Name</p> 
+                <input class="form-control" type="text" name="product">
+                <br>
+                <p>Category </p>
+                <input class="form-control" type="text" name="Category">
+                <br>
+                <p>Price </p>
+                <input class="form-control" type="text" name="price" id="">
+                <br>
+                <p>Img</p>
+                <div><input type="file" name="picture" accept="image/*" ></div>
+                <br>
+                <input class="btn btn-primary" type="submit" value="Create new">
+            </form>
+</body>
+</html>
