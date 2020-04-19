@@ -13,11 +13,12 @@ app.engine('hbs',engines.handlebars);
 app.set('views','./views');
 app.set('view engine','hbs');
 
-
+var homeController = require("./home.js");
+app.use('/home', homeController);
 
 var sanPhamController = require('./sanPham.js');
-
-
 app.use('/product',sanPhamController);
 
-var server=app.listen(8080,function() {});
+const PORT = process.env.PORT||8080;
+
+app.listen(PORT,()=>console.log(`connected on ${ PORT }`));

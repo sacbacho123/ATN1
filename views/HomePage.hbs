@@ -1,21 +1,4 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/product/search" method="POST">
-        Ten SanPham
-        <input type="text" name="tenSP" id="">
-        <input type="submit" value="Search">
-    </form>  
-</body>
-</html> --}}
-
-{{!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>ATN aquarium</title>
@@ -40,7 +23,7 @@
     <h1><a href="/home/"><img src="/images/logo.png" alt=""></a>ATN aquarium</h1>
     </div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
   <a class="navbar-brand" href="/home/">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -54,35 +37,33 @@
         <a class="nav-link" href="/product/insert">Add product</a>
       </li>
     </ul>
-  </div>
+  </div> 
   <form class="form-inline" action="/product/search" method="POST">
     <input class="form-control mr-sm-2" type="text" placeholder="Search" name="tenSP">
-    <button class="btn btn-success" type="submit" value="tenSP">Search</button>
-  </form>
+    <button class="btn btn-success" type="submit" value="tenSP" >Search</button>
+  </form> 
 </nav>
 <div class="container" style="margin-top:30px">
-  <table class="table table-borderless">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-        {{# each sanPham}}
-      <tr>
-        <td><img src="/product/photos/{{_id}}" alt="" width="200px"></td>
-        <td>{{TenSP}}</td>
-        <td>{{Category}}</td>
-        <td>{{Price}}$</td>
-        <td><button type="button" class="btn btn-warning"><a href="/product/edit?id={{_id}}">Update</a></button></td>
-        <td><button type="button" class="btn btn-danger"><a href="/product/delete?id={{_id}}">Delete</a></button></td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>HighLight</h2>
+      <img class="high" src="/images/tep1.jpg" width="300" height="250">
+      <p>Galaxy tiger </p>
+      <p>Price: 6000$ </p>
+      <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-8">
+      <h2>DESIGN MODELS</h2>
+      <img class="high" src="/images/anh1.jpg" width="780">
+      <p>The winning design at IAPLC 2010 is "Forest Fragrance" by contestant Paul Boutin from Russia. The size of this beautiful aquarium is 150x50x50 cm.</p>
+      <br>
+      <img class="high" src="/images/anh3.jpg" width="780">
+      <p>The aquarium called "Loess Plateau" (90x45x45cm) by Zhang Jian Feng from Macao won the Gold Prize of the competition.</p>
+      <br>
+      <img class="high" src="/images/anh4.jpg" width="780">
+      <p>Excellent design by Luis Carlos Galarraga from Brazil.</p>
+    </div>
+  </div>
 </div>
 <div class="jumbotron text-center" style="margin-bottom:0">
  <div class="footer">
@@ -93,4 +74,4 @@
 </div>
 </div>
 </body>
-</html> --}}
+</html>

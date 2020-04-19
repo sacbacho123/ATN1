@@ -1,0 +1,31 @@
+.logo {
+	width: 960px;
+	text-decoration: none;
+	color: rgb(29, 240, 205);
+}
+.logo a{
+	text-decoration: none;
+	color: rgb(37, 149, 201);
+}
+.icon{
+	float: right;
+	font-size: 25px;
+    text-decoration:none;
+}
+.icon a{
+	color: royalblue;
+	padding: 0px 2px;
+}
+.icon a:hover{
+	color: rgb(196, 13, 104);
+}
+
+.hot{
+	margin-top: 200px;
+	clear: left;
+}
+
+
+
+
+

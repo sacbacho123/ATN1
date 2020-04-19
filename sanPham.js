@@ -26,7 +26,6 @@ MongoClient.connect(url, (err, client) => {
     if (err) return console.log(err);
     db = client.db('dbtest')
 });
-
 router.get('/',async (req,res)=>{
     let client= await MongoClient.connect(url);
     let dbo = client.db("dbtest");
@@ -34,32 +33,31 @@ router.get('/',async (req,res)=>{
     res.render('allProduct',{sanPham:results});
 })
 
+
+//Update product (GET method)
 router.get('/edit', async(req,res)=>{
     let id = req.query.id;
     var ObjectID = require('mongodb').ObjectID;
-
     let client= await MongoClient.connect(url);
     let dbo = client.db("dbtest");
     let result = await dbo.collection("table").findOne({"_id" : ObjectID(id)});
     res.render('editProduct',{sanPham:result});
-
 })
-//Update product (GET method)
-router.get('/edit', async (req, res) => {
-    let id = req.query.id;
-    var ObjectID = require('mongodb').ObjectID;
-
-    let client = await MongoClient.connect(url);
-    let dbo = client.db("dbtest");
-    let result = await dbo.collection("table").findOne({ "_id": ObjectID(id) });
-    res.render('allProduct', { product: result });
-})
+// router.get('/edit', async (req, res) => {
+//     let id = req.query.id;
+//     var ObjectID = require('mongodb').ObjectID;
+//     let client = await MongoClient.connect(url);
+//     let dbo = client.db("dbtest");
+//     let result = await dbo.collection("table").findOne({ "_id": ObjectID(id) });
+//     res.render('allProduct', { sanPham:result });
+// })
 //update SP
 router.post('/edit', async(req,res)=>{
     let id = req.body.id;
     let name = req.body.name;
-    let price = req.body.gia;
-    let newValues ={$set : {TenSP: name,Price:price}};
+    let category = req.body.category;
+    let price = req.body.price;
+    let newValues ={$set : {TenSP: name,Category: category ,Price:price}};
     var ObjectID = require('mongodb').ObjectID;
     let condition = {"_id" : ObjectID(id)};
     
@@ -71,7 +69,7 @@ router.post('/edit', async(req,res)=>{
     res.render('allProduct',{sanPham:results});
 })
 
-//sanpham/insert->browser
+//insert
 router.get('/insert',(req,res)=>{
     res.render('insertProduct');
 });
@@ -82,7 +80,7 @@ router.post('/insert',upload.single('picture'), async (req, res) => {
     var insertProducts = {
         _id: req.body._id,
         TenSP: req.body.product,
-        Category: req.body.Category,
+        Category: req.body.Cat,
         Price: req.body.price,
         contentType: req.file.mimetype,
         image: new Buffer(encode_image, 'base64')
@@ -97,8 +95,14 @@ router.post('/insert',upload.single('picture'), async (req, res) => {
     let result2 = await dbo.collection("table").find({}).toArray();
     res.render('allProduct', {sanPham: result2});
 })
-
-
+router.get('/photos', (req, res) => {
+    db.collection('table').find().toArray((err, result) => {
+        const imgArray = result.map(element => element._id);
+        console.log(imgArray);
+        if (err) return console.log(err)
+        res.send(imgArray)
+    })
+});
 router.get('/photos/:id', (req, res) => {
     var filename = req.params.id;
     db.collection('table').findOne({'_id': ObjectId(filename)}, (err, result) => {
@@ -108,12 +112,10 @@ router.get('/photos/:id', (req, res) => {
     })
 })
 
-//sanpham/search->browser
+//search
 router.get('/search',(req,res)=>{
     res.render('searchSanPham');
 })
-
-//sanpham/search ->post
 router.post('/search',async (req,res)=>{
     let searchSP = req.body.tenSP;
     let client= await MongoClient.connect(url);
@@ -122,6 +124,7 @@ router.post('/search',async (req,res)=>{
     res.render('allProduct',{sanPham:results});
 })
 
+//delete
 router.get('/delete',async (req,res) =>{
     let client= await MongoClient.connect(url);
     let id = req.query.id;

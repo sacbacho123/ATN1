@@ -1,7 +1,6 @@
 {
   "name": "atn1",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -15,8 +14,18 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node app.js",
     "test": "node app.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sacbacho123/ATN1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sacbacho123/ATN1/issues"
+  },
+  "homepage": "https://github.com/sacbacho123/ATN1#readme",
+  "description": ""
 }
