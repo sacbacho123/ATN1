@@ -7,7 +7,7 @@ var url = 'mongodb+srv://ducanh123:ducanh1234@cluster0-2p8hw.azure.mongodb.net/t
 
 var router = express.Router();
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
     res.render('HomePage');
 });
 
