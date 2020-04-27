@@ -8,7 +8,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const MongoClient = require('mongodb').MongoClient;
 ObjectId = require('mongodb').ObjectId;
 
-//var url = 'mongodb://localhost:27017';
 var url = 'mongodb+srv://ducanh123:ducanh1234@cluster0-2p8hw.azure.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true';
 
 var storage = multer.diskStorage({
@@ -25,6 +24,7 @@ MongoClient.connect(url, (err, client) => {
     if (err) return console.log(err);
     db = client.db('dbtest')
 });
+
 router.get('/', async (req, res) => {
     let client = await MongoClient.connect(url);
     let dbo = client.db("dbtest");
@@ -32,8 +32,7 @@ router.get('/', async (req, res) => {
     res.render('allProduct', { sanPham: results });
 })
 
-
-//Update product (GET method)
+//Update 
 router.get('/edit', async (req, res) => {
     let id = req.query.id;
     var ObjectID = require('mongodb').ObjectID;
@@ -94,14 +93,6 @@ router.get('/photos/:id', (req, res) => {
     })
 })
 
-// router.get('/photos', (req, res) => {
-//     db.collection('table').find().toArray((err, result) => {
-//         const imgArray = result.map(element => element._id);
-//         console.log(imgArray);
-//         if (err) return console.log(err)
-//         res.send(imgArray)
-//     })
-// });
 //search
 // router.get('/search',(req,res)=>{
 //     res.render('searchSanPham');
